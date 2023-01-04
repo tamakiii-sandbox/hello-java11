@@ -6,8 +6,14 @@ RUN yum update -y && \
       man \
       make \
       less \
-      java-17-amazon-corretto \
+      zip \
+      unzip \
+      tar \
       && \
     yum clean all && \
     rm -rf /var/cache/yum/*
 
+RUN curl -s "https://get.sdkman.io" | bash
+
+RUN source "/root/.sdkman/bin/sdkman-init.sh" && \
+    sdk install java 11.0.17-amzn
